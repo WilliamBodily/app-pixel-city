@@ -44,7 +44,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BT8-IG-Xu0">
-                                <rect key="frame" x="344" y="812" width="50" height="50"/>
+                                <rect key="frame" x="344" y="826" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="61n-F3-1O6"/>
                                     <constraint firstAttribute="width" constant="50" id="63N-8x-y0u"/>
@@ -54,26 +54,28 @@
                                     <action selector="centerMapButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZoH-pR-EBR"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e88-qt-Neu">
-                                <rect key="frame" x="0.0" y="896" width="414" height="0.0"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e88-qt-Neu">
+                                <rect key="frame" x="0.0" y="895" width="414" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="w6A-i8-sAC"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="e88-qt-Neu" secondAttribute="bottom" id="8GB-3B-XqI"/>
+                            <constraint firstItem="BT8-IG-Xu0" firstAttribute="bottom" secondItem="e88-qt-Neu" secondAttribute="top" constant="-20" id="8jF-xn-2Di"/>
                             <constraint firstItem="b3b-Yz-mZG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="E9G-8h-xyf"/>
                             <constraint firstItem="n1I-AX-lX6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EIE-ab-1dT"/>
+                            <constraint firstAttribute="bottom" secondItem="e88-qt-Neu" secondAttribute="bottom" id="Jk8-lS-hY8"/>
                             <constraint firstItem="e88-qt-Neu" firstAttribute="top" secondItem="b3b-Yz-mZG" secondAttribute="bottom" id="NpW-hH-mf1"/>
                             <constraint firstItem="x1f-0d-BdL" firstAttribute="centerY" secondItem="n1I-AX-lX6" secondAttribute="centerY" id="Ohr-b3-Bbl"/>
                             <constraint firstItem="e88-qt-Neu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="P3f-6K-zzN"/>
                             <constraint firstItem="n1I-AX-lX6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZRW-TB-o4G"/>
                             <constraint firstItem="b3b-Yz-mZG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ehA-Je-Di8"/>
                             <constraint firstItem="b3b-Yz-mZG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="im6-Yo-RU4"/>
-                            <constraint firstAttribute="bottom" secondItem="b3b-Yz-mZG" secondAttribute="bottom" id="qzl-GV-XMl"/>
                             <constraint firstItem="n1I-AX-lX6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sVV-GY-dgP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BT8-IG-Xu0" secondAttribute="trailing" constant="20" id="tee-5g-Sbp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BT8-IG-Xu0" secondAttribute="bottom" id="twF-pc-qV6"/>
                             <constraint firstItem="x1f-0d-BdL" firstAttribute="centerX" secondItem="n1I-AX-lX6" secondAttribute="centerX" id="uNN-Ye-1a3"/>
                             <constraint firstAttribute="trailing" secondItem="e88-qt-Neu" secondAttribute="trailing" id="v48-g2-P8y"/>
                         </constraints>
@@ -81,6 +83,8 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="b3b-Yz-mZG" id="J4U-cR-XiC"/>
+                        <outlet property="pullUpView" destination="e88-qt-Neu" id="Icw-Gl-XRT"/>
+                        <outlet property="pullUpViewHeightConstraint" destination="w6A-i8-sAC" id="ch2-LS-5Cb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
