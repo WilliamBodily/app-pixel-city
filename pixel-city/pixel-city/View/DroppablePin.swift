@@ -12,11 +12,11 @@ import MapKit
 class DroppablePin: NSObject, MKAnnotation {
     
     var coordinate: CLLocationCoordinate2D
-    var id: String
+    var reuseIdentifier: String
     
-    init(coordinate: CLLocationCoordinate2D, id: String) {
+    init(coordinate: CLLocationCoordinate2D, reuseIdentifier: String) {
         self.coordinate = coordinate
-        self.id = id
+        self.reuseIdentifier = reuseIdentifier
         super.init()
     }
     
