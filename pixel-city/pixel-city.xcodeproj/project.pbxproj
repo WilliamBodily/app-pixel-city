@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		66F324AA4A993C95F62C25A0 /* Pods_pixel_city.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A569C7E082B5CB954C115CE6 /* Pods_pixel_city.framework */; };
+		8D1C2F0E224EFF5400DBB1BC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C2F0D224EFF5400DBB1BC /* Constants.swift */; };
 		8D4B088D224D8E4A0075C5C4 /* DroppablePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4B088C224D8E4A0075C5C4 /* DroppablePin.swift */; };
 		8D6D8FF6224BF2A200C2A7B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6D8FF5224BF2A200C2A7B1 /* AppDelegate.swift */; };
 		8D6D8FF8224BF2A200C2A7B1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6D8FF7224BF2A200C2A7B1 /* MapViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D1C2F0D224EFF5400DBB1BC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8D4B088C224D8E4A0075C5C4 /* DroppablePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroppablePin.swift; sourceTree = "<group>"; };
 		8D6D8FF2224BF2A200C2A7B1 /* pixel-city.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pixel-city.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D6D8FF5224BF2A200C2A7B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 		8D6D900A224BF44900C2A7B1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				8D1C2F0D224EFF5400DBB1BC /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D1C2F0E224EFF5400DBB1BC /* Constants.swift in Sources */,
 				8D6D8FF8224BF2A200C2A7B1 /* MapViewController.swift in Sources */,
 				8D4B088D224D8E4A0075C5C4 /* DroppablePin.swift in Sources */,
 				8D7194BB224EF83A007BC9F3 /* PicturesCollectionViewCell.swift in Sources */,

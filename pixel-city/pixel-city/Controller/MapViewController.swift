@@ -106,6 +106,12 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
             progressLabel?.removeFromSuperview()
         }
     }
+    
+    func flickrUrl(forApiKey key: String, withAnnotation annotation: DroppablePin, andNumberOfPhotos number: Int) -> String {
+        let url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=\(API_KEY)&lat=\(annotation.coordinate.latitude)&lon=\(annotation.coordinate.longitude)&radius=\(RADIUS)&radius_units=\(RADIUS_UNITS)&per_page=\(number)&format=json&nojsoncallback=1"
+        
+        return url
+    }
 
     @IBAction func centerMapButtonPressed(_ sender: Any) {
         if authorizationStatus == .authorizedAlways || authorizationStatus == .authorizedWhenInUse {
