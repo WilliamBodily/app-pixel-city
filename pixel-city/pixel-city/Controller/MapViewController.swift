@@ -46,6 +46,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
         collectionView?.delegate = self
         collectionView?.dataSource = self
         collectionView?.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        registerForPreviewing(with: self, sourceView: collectionView!)
         pullUpView.addSubview(collectionView!)
     }
     
@@ -271,6 +272,27 @@ extension MapViewController: UICollectionViewDelegate, UICollectionViewDataSourc
         guard let popViewController = storyboard?.instantiateViewController(withIdentifier: "PopViewController") as? PopViewController else { return }
         popViewController.initData(forImage: imageArray[indexPath.row])
         present(popViewController, animated: true, completion: nil)
+    }
+    
+}
+
+extension MapViewController: UIViewControllerPreviewingDelegate {
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        guard let indexPath = collectionView?.indexPathForItem(at: location), let cell = collectionView?.cellForItem(at: indexPath) else { return nil }
+        
+        guard let popViewController = storyboard?.instantiateViewController(withIdentifier: "PopViewController") as? PopViewController else { return nil }
+        popViewController.initData(forImage: imageArray[indexPath.row])
+        
+        previewingContext.sourceRect = cell.contentView.frame
+        
+        return popViewController
+        
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: self)
     }
     
 }
