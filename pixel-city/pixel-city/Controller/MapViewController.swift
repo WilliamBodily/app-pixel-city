@@ -28,6 +28,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     var collectionView: UICollectionView?
     
     var imageUrlArray = [String]()
+    var imageArray = [UIImage]()
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var pullUpViewHeightConstraint: NSLayoutConstraint!
@@ -68,6 +69,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func animateViewDown() {
+        cancelAllSessions()
         pullUpViewHeightConstraint.constant = 0
         UIView.animate(withDuration: 3.0) {
             self.view.layoutIfNeeded()
@@ -95,7 +97,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
         let width: CGFloat = 240
         let height: CGFloat = 40
         let fontName = "Avenir Next"
-        let fontSize: CGFloat = 17
+        let fontSize: CGFloat = 14
         
         progressLabel = UILabel()
         progressLabel?.frame = CGRect(x: (screenSize.width / 2) - (width / 2), y: y, width: width, height: height)
@@ -150,11 +152,13 @@ extension MapViewController: MKMapViewDelegate {
         
         removePin()
         removeSpinner()
+        removeProgressLabel()
+        cancelAllSessions()
+        
         animateViewUp()
         addSwipe()
         addSpinner()
         addProgressLabel()
-        removeProgressLabel()
         
         let touchPoint = sender.location(in: mapView)
         let touchCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
@@ -164,8 +168,15 @@ extension MapViewController: MKMapViewDelegate {
         let coordinateRegion = MKCoordinateRegion(center: touchCoordinate, latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
         
-        retrieveUrls(forAnnotation: annotation) { (true) in
-            print(self.imageUrlArray)
+        retrieveUrls(forAnnotation: annotation) { (success) in
+            if success {
+                self.retrieveImages(handler: { (success) in
+                    if success {
+                        self.removeSpinner()
+                        self.removeProgressLabel()
+                    }
+                })
+            }
         }
     }
     
@@ -188,6 +199,29 @@ extension MapViewController: MKMapViewDelegate {
                 self.imageUrlArray.append(postUrl)
             }
             handler(true)
+        }
+    }
+    
+    func retrieveImages(handler: @escaping (_ status: Bool) -> ()) {
+        imageArray = []
+        
+        for url in imageUrlArray {
+            Alamofire.request(url).responseImage { (response) in
+                guard let image = response.result.value else { return }
+                self.imageArray.append(image)
+                self.progressLabel?.text = "\(self.imageArray.count)/\(NUMBER_OF_PHOTOS) IMAGES DOWNLOADED"
+                
+                if self.imageArray.count == self.imageUrlArray.count {
+                    handler(true)
+                }
+            }
+        }
+    }
+    
+    func cancelAllSessions() {
+        Alamofire.SessionManager.default.session.getTasksWithCompletionHandler { (sessionDataTask, uploadData, downloadData) in
+            sessionDataTask.forEach({ $0.cancel() })
+            downloadData.forEach({ $0.cancel()})
         }
     }
     
