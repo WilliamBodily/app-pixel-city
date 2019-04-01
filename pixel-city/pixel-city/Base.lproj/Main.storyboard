@@ -116,21 +116,45 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7QF-ak-K1R">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKo-Hl-jDv">
+                                <rect key="frame" x="20" y="44" width="374" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="eX1-WX-U2Z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="7QF-ak-K1R" firstAttribute="top" secondItem="eHf-BO-D3H" secondAttribute="top" id="4Tj-BQ-E2M"/>
                             <constraint firstItem="CyW-sW-Oly" firstAttribute="centerY" secondItem="sNl-qT-oHO" secondAttribute="centerY" id="5BS-ph-08s"/>
                             <constraint firstItem="kov-Hc-SbR" firstAttribute="leading" secondItem="eHf-BO-D3H" secondAttribute="leading" id="5Bo-eT-qF0"/>
+                            <constraint firstItem="7QF-ak-K1R" firstAttribute="bottom" secondItem="TKo-Hl-jDv" secondAttribute="bottom" id="5H3-mp-fdD"/>
                             <constraint firstItem="sNl-qT-oHO" firstAttribute="centerX" secondItem="eHf-BO-D3H" secondAttribute="centerX" id="FGv-F1-Ge0"/>
                             <constraint firstItem="kov-Hc-SbR" firstAttribute="top" secondItem="eHf-BO-D3H" secondAttribute="top" id="JKx-OE-yIC"/>
                             <constraint firstItem="kov-Hc-SbR" firstAttribute="trailing" secondItem="eHf-BO-D3H" secondAttribute="trailing" id="LJ7-h5-VjO"/>
+                            <constraint firstItem="TKo-Hl-jDv" firstAttribute="top" secondItem="aYE-Kq-Rki" secondAttribute="top" id="PGd-dQ-o9q"/>
+                            <constraint firstItem="TKo-Hl-jDv" firstAttribute="leading" secondItem="eHf-BO-D3H" secondAttribute="leadingMargin" id="RPi-PQ-Yhh"/>
+                            <constraint firstItem="7QF-ak-K1R" firstAttribute="centerX" secondItem="eHf-BO-D3H" secondAttribute="centerX" id="RSh-j2-JGC"/>
+                            <constraint firstItem="7QF-ak-K1R" firstAttribute="trailing" secondItem="eHf-BO-D3H" secondAttribute="trailing" id="ZHm-r3-8eV"/>
+                            <constraint firstItem="7QF-ak-K1R" firstAttribute="leading" secondItem="eHf-BO-D3H" secondAttribute="leading" id="kI0-pc-yeU"/>
                             <constraint firstAttribute="bottom" secondItem="kov-Hc-SbR" secondAttribute="bottom" id="m2B-zD-VT9"/>
                             <constraint firstAttribute="bottom" secondItem="sNl-qT-oHO" secondAttribute="bottom" constant="20" id="nV2-EX-ZGn"/>
+                            <constraint firstItem="7QF-ak-K1R" firstAttribute="centerX" secondItem="TKo-Hl-jDv" secondAttribute="centerX" id="nXN-Pa-RgE"/>
                             <constraint firstItem="sNl-qT-oHO" firstAttribute="centerX" secondItem="CyW-sW-Oly" secondAttribute="centerX" id="ppd-Qq-Y0h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aYE-Kq-Rki"/>
                     </view>
                     <connections>
+                        <outlet property="imageTitle" destination="TKo-Hl-jDv" id="fFy-56-Y79"/>
+                        <outlet property="imageTitleBackground" destination="7QF-ak-K1R" id="l4o-vI-aEh"/>
                         <outlet property="popImageView" destination="kov-Hc-SbR" id="o1t-1c-tUi"/>
                     </connections>
                 </viewController>

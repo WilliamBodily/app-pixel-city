@@ -29,6 +29,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var imageUrlArray = [String]()
     var imageArray = [UIImage]()
+    var imageTitleArray = [String]()
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var pullUpViewHeightConstraint: NSLayoutConstraint!
@@ -204,6 +205,7 @@ extension MapViewController: MKMapViewDelegate {
             for photo in photoDictionary {
                 let postUrl = "https://farm\(photo["farm"]!).staticflickr.com/\(photo["server"]!)/\(photo["id"]!)_\(photo["secret"]!)_h_d.jpg"
                 self.imageUrlArray.append(postUrl)
+                self.imageTitleArray.append(photo["title"]! as! String)
             }
             handler(true)
         }
@@ -270,7 +272,7 @@ extension MapViewController: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let popViewController = storyboard?.instantiateViewController(withIdentifier: "PopViewController") as? PopViewController else { return }
-        popViewController.initData(forImage: imageArray[indexPath.row])
+        popViewController.initData(forImage: imageArray[indexPath.row], title: imageTitleArray[indexPath.row])
         present(popViewController, animated: true, completion: nil)
     }
     
@@ -283,7 +285,7 @@ extension MapViewController: UIViewControllerPreviewingDelegate {
         guard let indexPath = collectionView?.indexPathForItem(at: location), let cell = collectionView?.cellForItem(at: indexPath) else { return nil }
         
         guard let popViewController = storyboard?.instantiateViewController(withIdentifier: "PopViewController") as? PopViewController else { return nil }
-        popViewController.initData(forImage: imageArray[indexPath.row])
+        popViewController.initData(forImage: imageArray[indexPath.row], title: imageTitleArray[indexPath.row])
         
         previewingContext.sourceRect = cell.contentView.frame
         

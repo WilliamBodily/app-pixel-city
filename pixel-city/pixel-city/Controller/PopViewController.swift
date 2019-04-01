@@ -11,17 +11,22 @@ import UIKit
 class PopViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var passedImage: UIImage!
+    var passedImageTitle: String!
 
     @IBOutlet weak var popImageView: UIImageView!
+    @IBOutlet weak var imageTitleBackground: UIView!
+    @IBOutlet weak var imageTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         popImageView.image = passedImage
+        imageTitle.text = passedImageTitle
         addDoubleTapGesture()
     }
     
-    func initData(forImage image: UIImage) {
+    func initData(forImage image: UIImage, title: String) {
         self.passedImage = image
+        self.passedImageTitle = title
     }
     
     func addDoubleTapGesture() {
